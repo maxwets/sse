@@ -3,7 +3,8 @@
 
 void segmentedString() {
     printf("Give me ");
-    printf("bitcoins\n");
+    printf("bitcoins");
+	printf("!\n");
 }
 
 int main() {

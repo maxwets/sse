@@ -3,7 +3,7 @@
 
 
 void normalString() {
-    printf("Give me bitcoins\n");
+    printf("Give me bitcoins!\n");
 }
 
 int main() {

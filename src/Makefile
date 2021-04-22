@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-g -Wall -Wextra
-EXE=normal segment hex wide
+EXE=normal segment hex xor
 
 all: $(EXE)
 
@@ -13,8 +13,8 @@ segment: segment.c
 hex: hex.c
 	$(CC) $(CFLAGS) -o hex hex.c
 
-wide: wide.c
-	$(CC) $(CFLAGS) -o wide wide.c
+xor: xor.c
+	$(CC) $(CFLAGS) -o xor xor.c
 
 clean:
 	rm -rf $(EXE)
