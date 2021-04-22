@@ -17,4 +17,4 @@ xor: xor.c
 	$(CC) $(CFLAGS) -o xor xor.c
 
 clean:
-	rm -rf $(EXE)
+	rm -f $(EXE)

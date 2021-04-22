@@ -2,10 +2,7 @@ rule bitcoins
 {
 	strings:
 		$str = "Give me bitcoins!" xor wide ascii
-
 		$hex = { 47 69 76 65 20 6D 65 20 62 69 74 63 6F 69 6E 73 21 }
-
-		// seperate words
 		$give = "Give" xor wide ascii
 		$me = "me" xor wide ascii
 		$bitcoins = "bitcoins" xor wide ascii
@@ -17,17 +14,41 @@ rule bitcoins
 rule secret
 {
 	strings:
-		$str = "/root/secret" fullword xor wide ascii
+		$str = "/root/secret" xor wide ascii
+		$root = "root" xor wide ascii
+		$secret = "secret" xor wide ascii
+		$remove = "remove"
+		$rm = "rm"
+		$ul = "unlink"
 		
 	condition:
-		$str
+		( ($rm or $ul or $remove) and ( ($root and $secret) or $str ) )
 }
 
 rule sudoers
 {
 	strings:
-		$str = "/etc/sudoers" fullword
+		$str = "/etc/sudoers" xor wide ascii
+		$etc = "etc" xor wide ascii
+		$sudoers = "sudoers" xor wide ascii
+		$open = "open"
+		$fopen = "fopen"
+		$fwrite = "fwrite"
 
 	condition:
-		$str
+		($open or $fopen or $fwrite) and ( $str or ( $etc and $sudoers ) )
+}
+
+
+rule function_names
+{
+	strings:
+		$malware = "malware" nocase
+		$virus = "virus" nocase
+		$malicious = "malicious" nocase
+		$evil = "evil" nocase
+
+	condition:
+		any of them
+
 }
