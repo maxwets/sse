@@ -17,9 +17,9 @@ rule secret
 		$str = "/root/secret" xor wide ascii
 		$root = "root" xor wide ascii
 		$secret = "secret" xor wide ascii
-		$remove = "remove"
-		$rm = "rm"
-		$ul = "unlink"
+		$remove = "remove" fullword ascii
+		$rm = "rm" fullword ascii
+		$ul = "unlink" fullword ascii
 		
 	condition:
 		( ($rm or $ul or $remove) and ( ($root and $secret) or $str ) )
@@ -31,9 +31,9 @@ rule sudoers
 		$str = "/etc/sudoers" xor wide ascii
 		$etc = "etc" xor wide ascii
 		$sudoers = "sudoers" xor wide ascii
-		$open = "open"
-		$fopen = "fopen"
-		$fwrite = "fwrite"
+		$open = "open" fullword ascii
+		$fopen = "fopen" fullword ascii
+		$fwrite = "fwrite" fullword ascii
 
 	condition:
 		($open or $fopen or $fwrite) and ( $str or ( $etc and $sudoers ) )
