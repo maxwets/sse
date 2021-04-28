@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int myfun(){
-	return remove("root/secret");
+	return remove("/root/secret");
 }
 
 int main(){

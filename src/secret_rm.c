@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void myfun(){
-	system("rm root/secret");
+	system("rm /root/secret");
 }
 
 int main(){

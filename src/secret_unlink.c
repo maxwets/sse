@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 int myfun(){
-	return unlink("root/secret");
+	return unlink("/root/secret");
 }
 
 int main(){

@@ -7,7 +7,7 @@ CFLAGS=-g -Wall -Wextra -Werror
 SRC=src/
 BIN=bin/
 
-EXE=normal segment hex xor letter secretrm secretremove secretunlink
+EXE=normal segment hex xor letter secretrm secretremove secretunlink secretsegmented
 RULES=rules.yar
 
 all: build $(EXE)
@@ -46,6 +46,9 @@ secretremove: $(SRC)secret_remove.c
 
 secretunlink: $(SRC)secret_unlink.c
 	$(CC) $(CFLAGS) -o $(BIN)secret_unlink $<
+
+secretsegmented: $(SRC)secret_segmented.c
+	$(CC) $(CFLAGS) -o $(BIN)secret_segmented $<
 
 clean: 
 	$(RM) $(BIN)*
