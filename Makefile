@@ -1,16 +1,27 @@
 CC=gcc
-CFLAGS=-g -Wall -Wextra -Werror
+YARA=yara
 RM=rm -f
+
+CFLAGS=-g -Wall -Wextra -Werror
 
 SRC=src/
 BIN=bin/
 
 EXE=normal segment hex xor letter secretrm secretremove secretunlink
+RULES=rules.yar
 
 all: build $(EXE)
 
 build:
 	mkdir -p bin
+
+yara: build $(EXE)
+	@echo "Binaries :"
+	$(YARA) $(RULES) $(BIN)
+	@echo
+	@echo "Source files :"
+	$(YARA) $(RULES) $(SRC)
+	@echo
 
 normal: $(SRC)normal.c
 	$(CC) $(CFLAGS) -o $(BIN)normal $<
