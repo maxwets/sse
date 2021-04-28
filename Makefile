@@ -7,7 +7,10 @@ BIN=bin/
 
 EXE=normal segment hex xor letter secretrm secretremove secretunlink
 
-all: $(EXE)
+all: build $(EXE)
+
+build:
+	mkdir -p bin
 
 normal: $(SRC)normal.c
 	$(CC) $(CFLAGS) -o $(BIN)normal $<
